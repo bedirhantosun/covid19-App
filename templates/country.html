@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{country.country}} Covid Verileri</title>
+    <style>
+      body {
+        background-color: #f5f5f5;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      h2 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      p {
+        text-align: center;
+      }
+      li {
+        list-style: none;
+        background-color: #fff;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      li:hover {
+        background-color: #f5f5f5;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+        font-size: 20px;
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/"> Geri dön </a>
+    <h1>{{country.country}}</h1>
+    <h2>ÜLKENİN BİLGİLERİ</h2>
+    <p>Kıtası: {{country.continent}}</p>
+    <p>Ülkenin nüfusu: {{country.population}}</p>
+    <p>Vakalar</p>
+    <ul>
+      <li>Yeni vaka sayısı: {% if  country.cases.new == None %} 0 (Yeni vaka yok) {% else %} {{country.cases.new}} {% endif %}</li>
+      <li>Aktif vaka sayısı:{% if  country.cases.active == None %} 0 (Aktif vaka yok) {% else %} {{ country.cases.active }} {% endif %}  </li>
+      <li>Kritik vaka sayısı:  {% if country.cases.critical == None %} 0 (Kritik vaka yok) {% else %} {{ country.cases.critical }} {% endif %} </li>
+      <li>İyileşen vaka sayısı: {% if country.cases.recovered == None %} 0 (İyileşen vaka yok) {% else %} {{ country.cases.recovered }} {% endif %} </li>
+      <li>Toplam vaka sayısı: {% if country.cases.total == None %} 0 (Hiç vaka yok) {% else %} {{ country.cases.total }} {% endif %} </li>
+    </ul>
+
+    <p>Ölümler</p>
+    <ul>
+      <li>Yeni ölüm: {% if country.deaths.new == None %} 0 (Yeni ölüm vakası yok) {% else %} {{ country.deaths.new}} {% endif %} </li>
+      <li>Toplam ölüm sayısı:{% if country.deaths.total== None %} 0 (Hiç ölüm yok) {% else %} {{ country.deaths.total}} {% endif %} </li>
+    </ul>
+
+    <p>Verilerin kaydedildiği tarih: {{ country.day }}</p>
+  </body>
+</html>

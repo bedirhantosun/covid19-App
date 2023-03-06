@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COVID APP</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        ul {
+            padding-left: 0;
+        }
+        li {
+            list-style: none;
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        li:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>ÜLKELER</h1>
+    <ul>
+        {% for country in countries %}
+        <li onclick="getCountry(this)">{{country}}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Burada toplam {{totalCount}} ülke var</h2>
+    <script>
+      function getCountry(country) {
+        window.location.href = `/country/${country.textContent}`;
+      }
+    </script>
+  </body>
+</html>
